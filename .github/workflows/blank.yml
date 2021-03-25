@@ -11,7 +11,7 @@ jobs:
       - name: Set up Maven Central Repository
         uses: actions/setup-java@v1
         with:
-          java-version: 15
+          java-version: 1.8
           server-id: ossrh
           server-username: ${{ secrets.MAVEN_USERNAME }}
           server-password: ${{ secrets.MAVEN_PASSWORD }}
