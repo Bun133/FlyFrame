@@ -24,7 +24,7 @@ jobs:
 
     - name: Build with Maven
       working-directory: ./main
-      run: mvn -B package --file main/pom.xml
+      run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
       working-directory: ./main
