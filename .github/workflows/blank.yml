@@ -16,6 +16,7 @@ jobs:
           server-username: ${{ secrets.MAVEN_USERNAME }}
           server-password: ${{ secrets.MAVEN_PASSWORD }}
       - name: Publish package
+        working-directory: ./main
         run: mvn --batch-mode deploy
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
