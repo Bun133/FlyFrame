@@ -1,6 +1,6 @@
 @file:Suppress("SpellCheckingInspection")
 
-package com.bun133.flyframe.util
+package com.github.bun133.flyframe.util
 
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender

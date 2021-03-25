@@ -1,4 +1,4 @@
-package com.bun133.flyframe.flylib
+package com.github.bun133.flyframe.flylib
 
 import org.bukkit.Bukkit
 import org.bukkit.command.Command

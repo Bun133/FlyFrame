@@ -1,9 +1,9 @@
-package com.bun133.flyframe.command
+package com.github.bun133.flyframe.command
 
-import com.bun133.flyframe.FlyFrame
-import com.bun133.flyframe.flylib.SmartTabCompleter
-import com.bun133.flyframe.flylib.TabChain
-import com.bun133.flyframe.flylib.TabObject
+import com.github.bun133.flyframe.FlyFrame
+import com.github.bun133.flyframe.flylib.SmartTabCompleter
+import com.github.bun133.flyframe.flylib.TabChain
+import com.github.bun133.flyframe.flylib.TabObject
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
