@@ -1,0 +1,12 @@
+name: Flyframe
+version: ${project.version}
+main: com.github.bun133.flyframe.FlyFrame
+api-version: 1.15
+authors: [ Bun133 ]
+website: https://twitter.com/bun133_
+commands:
+  fm:
+    usage: /<command> <list|help>
+    description: Manage Command of FlyFrame
+    permission: op
+    permission-message: You don't have enough permission!
