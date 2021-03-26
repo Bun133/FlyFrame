@@ -18,6 +18,15 @@
     </properties>
     <url>https://twitter.com/bun133_</url>
 
+    <distributionManagement>
+        <repository>
+            <id>release</id>
+            <name>Release repository</name>
+            <layout>default</layout>
+            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
