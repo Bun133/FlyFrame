@@ -4,12 +4,36 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.bun133</groupId>
+    <groupId>com.github.bun133</groupId>
     <artifactId>flyframe</artifactId>
-    <version>1.0</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
+    <description>
+        FlyFrame is Easy Frame Work
+    </description>
 
+    <scm>
+        <connection>scm:git:https://github.com/bun133/FlyFrame.git</connection>
+        <developerConnection>scm:git:https://github.com/bun133/FlyFrame.git</developerConnection>
+        <url>https://github.com/bun133/FlyFrame</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Mozilla Public License Version 2.0</name>
+            <url>https://www.mozilla.org/en-US/MPL/2.0/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <name>FlyFrame</name>
+
+    <developers>
+        <developer>
+            <id>bun133</id>
+            <name>Bun133</name>
+            <email>bun133.work@gmail.com</email>
+        </developer>
+    </developers>
 
     <properties>
         <java.version>1.8</java.version>
@@ -19,12 +43,10 @@
     <url>https://twitter.com/bun133_</url>
 
     <distributionManagement>
-        <repository>
-            <id>release</id>
-            <name>Release repository</name>
-            <layout>default</layout>
-            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <build>
@@ -94,6 +116,72 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <show>package</show>
+                    <source>1.7</source>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
+                    <charset>UTF-8</charset>
+                    <outputDirectory>target/</outputDirectory>
+<!--                    <links>-->
+<!--                        <link>http://docs.oracle.com/javase/7/docs/api/</link>-->
+<!--                    </links>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+<!--                        <phase>package</phase>-->
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -125,12 +213,13 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test</artifactId>
             <version>${kotlin.version}</version>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

@@ -9,12 +9,18 @@ import org.bukkit.plugin.UnknownDependencyException
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
+/**
+ * Main Point
+ */
 class FlyFrame : JavaPlugin() {
     lateinit var modulesFolder: File
     val modules = mutableListOf<Module>()
     lateinit var eventHandler: EventHandler
 
 
+    /**
+     * OnEnable
+     */
     override fun onEnable() {
         // Plugin startup logic
         eventHandler = EventHandler(this)
@@ -35,8 +41,10 @@ class FlyFrame : JavaPlugin() {
 
     fun reloadModules(se: MessageSendable) {
         val files = modulesFolder.listFiles()
+        println("[FlyFrame] ${files.size} Files")
         var loadedPluginCount = 0
         files.forEach {
+            println("FileName:${it.name}")
             var p: Plugin? = null
             var shouldSkipLoad = false
             try {
